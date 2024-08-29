@@ -1,9 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-export default function Display() {
-    return(
+interface DisplayValue {
+    text: string
+}
+
+export default function Display(props: DisplayValue) {
+    return (
         <View style={styles.container}>
-            <Text style={styles.displayText}>0</Text>
+            <Text style={styles.displayText}>{props.text}</Text>
         </View>
     )
 }
