@@ -7,7 +7,9 @@ interface DisplayValue {
 export default function Display(props: DisplayValue) {
     return (
         <View style={styles.container}>
-            <Text style={styles.displayText}>{props.text}</Text>
+            <Text 
+            numberOfLines={2}
+            style={styles.displayText}>{props.text}</Text>
         </View>
     )
 }
