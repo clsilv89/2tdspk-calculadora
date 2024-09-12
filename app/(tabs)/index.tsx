@@ -1,10 +1,13 @@
 import CalculatorButton from '@/components/CalculatorButton';
 import Display from '@/components/Display';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function HomeScreen() {
+import { PostType } from '../models/post.interface';
+import { Post } from '@/components/AxiosComponent';
+
+export default function HomeScreen() {  
   const ASYNC_KEY = 'MEMORY_SAVED'
 
   const [displayValue, setDisplayValue] = useState('0')
@@ -12,6 +15,15 @@ export default function HomeScreen() {
   const [clearDisplay, setClearDisplay] = useState(false)
   const [values, setValues] = useState([0, 0])
   const [position, setPosition] = useState(0)
+
+  useEffect(() => {
+    fetchData()
+  })
+
+  async function fetchData() {
+    const response = await Post.getPosts()
+    console.log(response)
+  }
 
   function funcClearDisplay() {
     setPosition(0)
